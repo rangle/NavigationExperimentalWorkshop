@@ -11,7 +11,7 @@ import { SCENES } from '../constants';
  */
 export default compose(
   connect(() => ({}), {
-    goToScene: () => navigator.onPush({ key: SCENES.HOME }),
+    goToScene: () => navigator.onPop(),
   }),
   defaultProps({
     name: 'Profile',

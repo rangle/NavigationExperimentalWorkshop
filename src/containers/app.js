@@ -25,40 +25,31 @@ export default compose(
   // mapStateToProps and mapDispatchToProps
   connect(R.pick(['navigationState']), navigator),
   // mapProps accepts a function that maps the components props to a new
-  // collection of props. We are using it here to generate the onNavigate
-  // and handleBackAction functions.
-  mapProps(({ onPop, onPush, navigationState }) => ({
-    onNavigate: ({ type, route }) => {
-      switch(type) {
-        case 'push':
-          onPush(route);
-          return true;
-        case 'back':
-        case 'pop':
-          onPop();
-          return true;
-        default:
-          return false;
-      }
-    },
-    handleBackAction: () => { onPop(); return true; },
+  // collection of props. We are using it here to generate onNavigateBack
+  // prop.
+  //
+  // This prop is a function that is fired if the user triggers back actions
+  // for example edge swipe back
+  mapProps(({ onPop, navigationState }) => ({
+    onNavigateBack: () => { onPop(); return true; },
     navigationState,
   })),
   // Setting the value for direction and renderScene props here –
   // using recompose's defaultprops method:
   defaultProps({ direction: 'horizontal', renderScene }),
-  // We are connecting the Android back button to the navigator actions here
-  // To do so, we addEventListener on component mount and then unsubscribe
-  // when the component will unmount.
+  // We are connecting the Android back button to the navigator back actions
+  //  here. To do so, we addEventListener on component mount and then
+  //  unsubscribe when the component will unmount.
+  //
   // Again, using recompose instead of creating a stateful component.
   lifecycle({
     componentWillMount() {
-      const { handleBackAction } = this.props;
-      BackAndroid.addEventListener('hardwareBackPress', handleBackAction);
+      const { onNavigateBack } = this.props;
+      BackAndroid.addEventListener('hardwareBackPress', onNavigateBack);
     },
     componentWillUnmount() {
-      const { handleBackAction } = this.props;
-      BackAndroid.removeEventListener('hardwareBackPress', handleBackAction);
+      const { onNavigateBack } = this.props;
+      BackAndroid.removeEventListener('hardwareBackPress', onNavigateBack);
     }
   })
 )(NavigationExperimental.CardStack);
