@@ -9,6 +9,9 @@ import renderScene from '../scene-renderer';
 /**
  * App Component
  *
+ * This is the root component of the app. In this case it is simply the
+ * `NavigationExperimental.CardStack` with appropriate props and config.
+ *
  * Instead of creating stateful component we are using Recompose. This is not
  * requirement for React Native and/or NavigationExperimental. You can write
  * your app using stateful component instead and it will work just fine.
@@ -23,15 +26,21 @@ import renderScene from '../scene-renderer';
 export default compose(
   // This is the usual Redux connect which is made up of:
   // mapStateToProps and mapDispatchToProps
-  connect(R.pick(['navigationState']), navigator),
+  // TODO: for mapStateToProps provide navigationState
+  // TODO: for mapDispatchToProps: provide the navigator actions
+  connect(/* mapStateToProps goes here */, /* mapDispatchToProps goes here */),
   // mapProps accepts a function that maps the components props to a new
   // collection of props. We are using it here to generate onNavigateBack
   // prop.
   //
   // This prop is a function that is fired if the user triggers back actions
   // for example edge swipe back
-  mapProps(({ onPop, navigationState }) => ({
-    onNavigateBack: () => { onPop(); return true; },
+  // collection of props. We are using it here to generate the onNavigateBack
+  // function.
+  mapProps(({ onPop, onPush, navigationState }) => ({
+    onNavigateBack: () => {
+      // TODO: implement this function
+    },
     navigationState,
   })),
   // Setting the value for direction and renderScene props here –

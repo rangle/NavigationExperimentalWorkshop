@@ -5,6 +5,13 @@ import { SCENES } from '../constants';
 
 const { StateUtils: NavigationStateUtils } = NavigationExperimental;
 
+/**
+ * NavigationStateUtils provides all the methods you need
+ * to update the navigator state.
+ *
+ * This is an example of how to use these methods:
+ * https://github.com/facebook/react-native/blob/master/Examples/UIExplorer/js/NavigationExperimental/NavigationCardStack-example.js#L76
+ */
 const {
   push: pushScene,
   jumpToIndex,
@@ -20,21 +27,22 @@ const initialState = {
   }],
 };
 
+/**
+ * Navigator State Reducer
+ */
 function navigatorReducer(state = initialState, { type, payload }) {
   const index = sceneIndex(state, payload && payload.key);
 
   switch (type) {
     case NAVIGATOR.PUSHED:
-      if (state.routes[state.index].key === (payload && payload.key)) {
-        return state;
-      }
-      return index === -1 ? pushScene(state, payload) : jumpToIndex(state, index);
+      // TODO: Complete the implementation for this case
+      // consider the scenario where you might be pushing
+      // a duplicate route
 
     case NAVIGATOR.POPPED:
-      if (state.index === 0 || state.routes.length === 1) {
-        return state;
-      }
-      return popScene(state);
+      // TODO: Complete the implementation for this case
+      // consider the scenario where you the user might
+      // request pop with only one route in the stack
 
     case NAVIGATOR.JUMPED:
       return index === -1 ? pushScene(state, payload) : jumpToIndex(state, index);

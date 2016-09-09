@@ -7,14 +7,14 @@ import { navigator } from '../actions/creators';
 import { SCENES } from '../constants';
 
 /**
- * AppHome
+ * Home Scene
  */
 export default compose(
   connect(() => ({}), {
-    goToScene: () => navigator.onPush({ key: SCENES.PROFILE }),
+    goToScene: // TODO: implement a function to navigate to the profile scene
   }),
   defaultProps({
-    name: 'Home',
-    destination: 'Profile',
+    name: // TODO: provide the value for name
+    destination: // TODO: provide the value for destination
   }),
 )(AppScene);

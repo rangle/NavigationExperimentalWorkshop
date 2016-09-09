@@ -1,6 +1,13 @@
 import React, { PropTypes } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
+/**
+ * This is a generic scene component that we use to
+ * to build the Home and Profile views.
+ * @param {function} goToScene Navigator action to go to a route of your choice
+ * @param {String} name        Name of the current scene
+ * @param {String} destination Name of the destination scene
+ */
 export default function AppScene({ goToScene, name, destination }) {
   return (
     <View style={ styles.container }>
