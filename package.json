@@ -1,0 +1,26 @@
+{
+  "name": "NavigationExperimentalWorkshop",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "dev": "npm run dev:ios",
+    "dev:ios": "node node_modules/react-native/local-cli/cli.js run-ios",
+    "dev:android": "node node_modules/react-native/local-cli/cli.js run-android"
+  },
+  "dependencies": {
+    "ramda": "^0.22.1",
+    "react": "15.3.1",
+    "react-native": "0.32.1",
+    "react-redux": "^4.4.5",
+    "recompose": "^0.20.2",
+    "redux": "^3.6.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.14.0",
+    "babel-eslint": "^6.1.2",
+    "babel-polyfill": "^6.13.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react-native": "^1.9.0"
+  }
+}
