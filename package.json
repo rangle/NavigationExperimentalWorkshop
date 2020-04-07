@@ -9,7 +9,7 @@
     "dev:android": "node node_modules/react-native/local-cli/cli.js run-android"
   },
   "dependencies": {
-    "ramda": "^0.22.1",
+    "ramda": "^0.27.0",
     "react": "15.3.1",
     "react-native": "0.32.1",
     "react-redux": "^4.4.5",
